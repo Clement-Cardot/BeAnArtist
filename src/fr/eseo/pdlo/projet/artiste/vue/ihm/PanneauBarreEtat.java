@@ -19,8 +19,8 @@ public class PanneauBarreEtat extends JPanel implements MouseMotionListener{
 	
 	public PanneauBarreEtat(PanneauDessin panneauDessin){
 		this.panneauDessin = panneauDessin;
-		this.valeurX = new JLabel("x: ");
-		this.valeurY = new JLabel("y: ");
+		this.valeurX = new JLabel("x: 0");
+		this.valeurY = new JLabel("y: 0");
 		
 		this.setLayout(new FlowLayout());
 		
