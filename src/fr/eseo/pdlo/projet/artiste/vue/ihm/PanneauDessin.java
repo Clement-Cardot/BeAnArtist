@@ -4,15 +4,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import fr.eseo.pdlo.projet.artiste.controleur.outils.Outil;
+import fr.eseo.pdlo.projet.artiste.controleur.outils.OutilSelectionnerExtension;
 import fr.eseo.pdlo.projet.artiste.modele.Remplissage;
 import fr.eseo.pdlo.projet.artiste.modele.formes.Forme;
 import fr.eseo.pdlo.projet.artiste.vue.formes.VueForme;
 
 
+@SuppressWarnings("serial")
 public class PanneauDessin extends JPanel{
  
 	public static final int LARGEUR_PAR_DEFAUT = 400;
@@ -23,6 +26,7 @@ public class PanneauDessin extends JPanel{
 	private Outil outilCourant;
 	private Color couleurCourante;
 	private Remplissage remplissage = Remplissage.AUCUNE;
+	private boolean antiAliasing = false;
 	
 	//private JPanel panneau;
 	
@@ -42,6 +46,11 @@ public class PanneauDessin extends JPanel{
 		return this.vueFormes;
 	}
 	
+	public void setVuesFormes(List<VueForme> newVueFormes) {
+		this.vueFormes.clear();
+		this.vueFormes.addAll(newVueFormes);
+	}
+	
 	public Outil getOutilCourant() {
 		return this.outilCourant;
 	}
@@ -52,6 +61,10 @@ public class PanneauDessin extends JPanel{
 	
 	public Color getCouleurCourante() {
 		return this.couleurCourante;
+	}
+	
+	public boolean getAntiAliasing() {
+		return this.antiAliasing;
 	}
 	
 	public void setCouleurCourante(Color couleurCourante) {
@@ -66,6 +79,10 @@ public class PanneauDessin extends JPanel{
 		this.remplissage = modeRemplissage;
 	}
 	
+	public void setAntiAliasing(boolean antiAliasing) {
+		this.antiAliasing = antiAliasing;
+	}
+	
 	public void ajouterVueForme(VueForme vueForme) {
 		vueForme.getForme().setCouleur(this.couleurCourante);
 		this.vueFormes.add(vueForme);
@@ -75,6 +92,11 @@ public class PanneauDessin extends JPanel{
 		super.paintComponent(g);
 		
 		Graphics2D g2D = (Graphics2D)g.create();
+		
+		if(this.antiAliasing) {
+			g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		}
+		
 		for(VueForme vueForme : this.getVueFormes()) {
 			vueForme.affiche(g2D);
 		}
@@ -95,9 +117,18 @@ public class PanneauDessin extends JPanel{
 	}
 	
 	public void dissocierOutil() {
-		this.outilCourant.setPanneauDessin(null);
-		this.removeMouseListener(outilCourant);
-		this.removeMouseMotionListener(outilCourant);
-		this.setOutilCourant(null);
+		if(this.outilCourant != null) {
+			if(this.outilCourant.getClass().getSimpleName().equals("OutilSelectionnerExtension")) {
+				OutilSelectionnerExtension outilSelection = (OutilSelectionnerExtension) this.outilCourant;
+				outilSelection.effacerAncienCadre();
+			}
+			
+			this.outilCourant.setPanneauDessin(null);
+			this.removeMouseListener(outilCourant);
+			this.removeMouseMotionListener(outilCourant);
+			this.setOutilCourant(null);
+		}
 	}
+
+
 }

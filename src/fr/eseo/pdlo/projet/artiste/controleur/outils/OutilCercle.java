@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 
 import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
 import fr.eseo.pdlo.projet.artiste.modele.formes.Cercle;
-import fr.eseo.pdlo.projet.artiste.vue.formes.VueEllipse;
+import fr.eseo.pdlo.projet.artiste.vue.formes.VueCercle;
 import fr.eseo.pdlo.projet.artiste.vue.formes.VueForme;
 
 public class OutilCercle extends OutilForme{
@@ -52,6 +52,6 @@ public class OutilCercle extends OutilForme{
 
 		Cercle cercle = new Cercle(position, diametre);
 		cercle.setRemplissage(this.getPanneauDessin().getModeRemplissageCourant());
-		return new VueEllipse(cercle);
+		return new VueCercle(cercle);
 	}
 }

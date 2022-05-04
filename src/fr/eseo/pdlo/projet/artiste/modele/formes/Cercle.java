@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
 
+@SuppressWarnings("serial")
 public class Cercle extends Ellipse{
 
 	public Cercle(Coordonnees position, double largeur){

@@ -8,6 +8,7 @@ import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
 import fr.eseo.pdlo.projet.artiste.modele.Remplissable;
 import fr.eseo.pdlo.projet.artiste.modele.Remplissage;
 
+@SuppressWarnings("serial")
 public class Ellipse extends Forme implements Remplissable{
 	
 	private Remplissage remplissage = Remplissage.AUCUNE;

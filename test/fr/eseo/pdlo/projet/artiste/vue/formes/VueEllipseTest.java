@@ -1,7 +1,5 @@
 package fr.eseo.pdlo.projet.artiste.vue.formes;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -33,29 +31,10 @@ public class VueEllipseTest {
 		fenetre.setVisible(true);
 	}
 	
-	@Test
-	private void testCouleur() {
-		Ellipse ellipse = new Ellipse(new Coordonnees(5,5), 10, 10);
-		ellipse.setCouleur(Color.blue);
-		VueEllipse vueEllipse = new VueEllipse(ellipse);
-		
-		JFrame fenetre = new JFrame("Etre un Artiste");
-		PanneauDessin panel = new PanneauDessin();
-		
-		fenetre.add(panel);
-		panel.ajouterVueForme(vueEllipse);
-		panel.paintComponents(panel.getGraphics());
-		
-		fenetre.setLocationRelativeTo(null);
-		fenetre.setSize(500, 300);
-		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fenetre.setVisible(true);
-	}
 
 	
 	VueEllipseTest() {
 		testConstructeur();
-		testCouleur();
 	}
 	
 	public static void main(String[] args) {

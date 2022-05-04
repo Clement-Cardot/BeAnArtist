@@ -6,9 +6,10 @@ import java.util.Locale;
 
 import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
 
+@SuppressWarnings("serial")
 public class Ligne extends Forme {
 	
-	public static final double EPSILON = 0.2; // Temporaire remettre 0.1 après
+	public static final double EPSILON = 0.2;
 	
 	// Constructeurs
 	public Ligne(Coordonnees position, double largeur, double hauteur){
@@ -66,7 +67,7 @@ public class Ligne extends Forme {
 	public boolean contient(Coordonnees coordonnees) {
 		double distanceC1 = Math.abs(this.getC1().distanceVers(coordonnees));
 		double distanceC2 = Math.abs(this.getC2().distanceVers(coordonnees));
-		return (distanceC1+ distanceC2-this.perimetre() <= EPSILON);
+		return (distanceC1 + distanceC2 - this.perimetre() <= EPSILON);
 	}
 	
 	public double angle() {

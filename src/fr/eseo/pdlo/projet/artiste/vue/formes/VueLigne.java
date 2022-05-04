@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import fr.eseo.pdlo.projet.artiste.modele.formes.Ligne;
 
+@SuppressWarnings("serial")
 public class VueLigne extends VueForme{
 	
 	public VueLigne(Ligne ligne) {

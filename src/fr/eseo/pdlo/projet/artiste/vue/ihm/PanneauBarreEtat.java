@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
 
+@SuppressWarnings("serial")
 public class PanneauBarreEtat extends JPanel implements MouseMotionListener{
 	
 	

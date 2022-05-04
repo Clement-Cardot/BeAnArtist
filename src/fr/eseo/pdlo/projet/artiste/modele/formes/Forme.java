@@ -1,10 +1,14 @@
 package fr.eseo.pdlo.projet.artiste.modele.formes;
 
 import java.awt.Color;
+import java.io.Serializable;
+
 import fr.eseo.pdlo.projet.artiste.modele.Coloriable;
 import fr.eseo.pdlo.projet.artiste.modele.Coordonnees;
+import fr.eseo.pdlo.projet.artiste.modele.Remplissage;
 
-public abstract class Forme implements Coloriable{
+@SuppressWarnings("serial")
+public abstract class Forme implements Coloriable, Serializable{
 
 	public static final double LARGEUR_PAR_DEFAUT = 10;
 	public static final double HAUTEUR_PAR_DEFAUT = 10;
@@ -123,8 +127,15 @@ public abstract class Forme implements Coloriable{
 		this.getPosition().deplacerDe(deltaX, deltaY);
 	}
 	
+	public Remplissage getRemplissage() {
+		return Remplissage.AUCUNE;
+	}
+	
+	public void setRemplissage(Remplissage remplissage) {
+	
+	}
+	
 	public abstract double aire();
 	public abstract double perimetre();
 	public abstract boolean contient(Coordonnees coordonnees);
-	
 }

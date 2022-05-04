@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import fr.eseo.pdlo.projet.artiste.modele.Remplissage;
 import fr.eseo.pdlo.projet.artiste.modele.formes.Ellipse;
 
+@SuppressWarnings("serial")
 public class VueEllipse extends VueForme{
 	
 	public VueEllipse(Ellipse ellipse){
@@ -27,7 +28,6 @@ public class VueEllipse extends VueForme{
 			g2d.fillOval(x, y, width, height);
 			
 		}
-		
 		g2d.drawOval(x, y, width, height);
 		
 		g2d.setColor(couleurSauvegarde);

@@ -7,6 +7,7 @@ import javax.swing.AbstractAction;
 import fr.eseo.pdlo.projet.artiste.modele.Remplissage;
 import fr.eseo.pdlo.projet.artiste.vue.ihm.PanneauDessin;
 
+@SuppressWarnings("serial")
 public class ActionChoisirModeRemplissage extends AbstractAction{
 
 	private final PanneauDessin panneauDessin;

@@ -1,10 +1,12 @@
 package fr.eseo.pdlo.projet.artiste.modele;
 
 import java.util.Locale;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class Coordonnees {
+@SuppressWarnings("serial")
+public class Coordonnees implements Serializable{
 	// Constantes de classe
 	public static final double ABSCISSE_PAR_DEFAUT = 0;
 	public static final double ORDONNEE_PAR_DEFAUT = 0;
